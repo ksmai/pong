@@ -14,6 +14,9 @@ protected:
   virtual void render_impl() override;
   virtual int handle_event_impl() override;
 private:
+  void check_ball_collision();
+  void check_score();
+
   Paddle *player;
   Paddle *computer;
   Ball *ball;

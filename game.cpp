@@ -59,6 +59,9 @@ void Game::event_loop() {
     update(dt);
     render();
     last_frame_time = current_time;
+    // special handling to prevent enter/space from triggering too often
+    keys_down[SDLK_RETURN] = false;
+    keys_down[SDLK_SPACE] = false;
   }
 }
 
@@ -69,7 +72,7 @@ int Game::handle_event() {
     return 1;
   } else if (event.type == SDL_KEYUP) {
     keys_down[event.key.keysym.sym] = false;
-  } else if (event.type == SDL_KEYDOWN) {
+  } else if (event.type == SDL_KEYDOWN && !event.key.repeat) {
     keys_down[event.key.keysym.sym] = true;
   }
   return handle_event_impl();
