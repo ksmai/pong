@@ -12,8 +12,24 @@ Ball::Ball(Graphics *graphics, double x, double y, int radius):
 Ball::~Ball() {
 }
 
+double Ball::get_x() const {
+  return x;
+}
+
 double Ball::get_y() const {
   return y;
+}
+
+int Ball::get_radius() const {
+  return radius;
+}
+
+double Ball::get_speed_x() const {
+  return speed_x;
+}
+
+double Ball::get_speed_y() const {
+  return speed_y;
 }
 
 void Ball::update(int dt) {

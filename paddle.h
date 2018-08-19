@@ -15,6 +15,10 @@ public:
   virtual void update(int dt) override;
   virtual void render() override;
   void set_direction(Direction direction);
+  double get_x() const;
+  double get_y() const;
+  int get_w() const;
+  int get_h() const;
 protected:
   const int w;
   const int h;

@@ -12,7 +12,11 @@ public:
   virtual void render() override;
   void set_speed(double speed_x, double speed_y);
   void set_position(double x, double y);
+  double get_x() const;
   double get_y() const;
+  int get_radius() const;
+  double get_speed_x() const;
+  double get_speed_y() const;
 private:
   int radius;
   double speed_x;

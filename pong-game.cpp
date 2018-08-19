@@ -113,6 +113,30 @@ int PongGame::handle_event_impl() {
 }
 
 void PongGame::check_ball_collision() {
+  // AABB collision
+  int ball_top = static_cast<int>(ball->get_y()) - ball->get_radius();
+  int ball_bottom = static_cast<int>(ball->get_y()) + ball->get_radius();
+  int ball_left = static_cast<int>(ball->get_x()) - ball->get_radius();
+  int ball_right = static_cast<int>(ball->get_x()) + ball->get_radius();
+  int player_top = static_cast<int>(player->get_y());
+  int player_bottom = static_cast<int>(player->get_y()) + player->get_h();
+  int player_left = static_cast<int>(player->get_x());
+  int player_right = static_cast<int>(player->get_x()) + player->get_w();
+  int computer_top = static_cast<int>(computer->get_y());
+  int computer_bottom = static_cast<int>(computer->get_y()) + computer->get_h();
+  int computer_left = static_cast<int>(computer->get_x());
+  int computer_right = static_cast<int>(computer->get_x()) + computer->get_w();
+  if (ball_top <= player_bottom && ball_bottom >= player_top && ball_left <= player_right && ball_right >= player_left) {
+    double ball_speed_y = -ball->get_speed_y();
+    double ball_speed_x = (ball->get_x() - (player->get_x() + player->get_w() / 2)) / (player->get_w() / 2) * constants::BALL_SPEED_X_MAX;
+    ball->set_speed(ball_speed_x, ball_speed_y);
+    ball->set_position(ball->get_x(), player->get_y() - ball->get_radius() - 1);
+  } else if (ball_top <= computer_bottom && ball_bottom >= computer_top && ball_left <= computer_right && ball_right >= computer_left) {
+    double ball_speed_y = -ball->get_speed_y();
+    double ball_speed_x = (ball->get_x() - (computer->get_x() + computer->get_w() / 2)) / (computer->get_w() / 2) * constants::BALL_SPEED_X_MAX;
+    ball->set_speed(ball_speed_x, ball_speed_y);
+    ball->set_position(ball->get_x(), computer->get_y() + computer->get_h() + ball->get_radius() + 1);
+  }
 }
 
 void PongGame::check_score() {

@@ -16,6 +16,22 @@ Paddle::Paddle(Graphics *graphics, double x, double y, int w, int h, double move
 Paddle::~Paddle() {
 }
 
+double Paddle::get_x() const {
+  return x;
+}
+
+double Paddle::get_y() const {
+  return y;
+}
+
+int Paddle::get_w() const {
+  return w;
+}
+
+int Paddle::get_h() const {
+  return h;
+}
+
 void Paddle::set_direction(Direction direction) {
   this->direction = direction;
 }
