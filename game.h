@@ -2,6 +2,7 @@
 #define _GAME_H_
 
 #include <SDL.h>
+#include <unordered_map>
 
 #include "text.h"
 #include "graphics.h"
@@ -24,6 +25,7 @@ protected:
   Text *text;
   Graphics *graphics;
   int last_frame_time;
+  std::unordered_map<int, bool> keys_down;
 };
 
 #endif
