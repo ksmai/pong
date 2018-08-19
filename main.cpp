@@ -1,6 +1,6 @@
-#include "game.h"
+#include "pong-game.h"
 
 int main(int argc, char *argv[]) {
-  Game game;
+  PongGame game;
   return game.run();
 }

@@ -45,12 +45,6 @@ void Game::render() {
 }
 
 void Game::render_impl() {
-  static int x = 0;
-  text->add("Hello small", 0, 0, Text::Size::Small, 255, 255, 255);
-  text->add("Hello medium", 0, 100, Text::Size::Medium, 255, 255, 255);
-  text->add("Hello large", 0, 200, Text::Size::Large, 255, 255, 255);
-  graphics->circle(x, 400, 50, 255, 255, 255);
-  graphics->rectangle(600, 400, 100, 10, 255, 0, 0);
 }
 
 void Game::event_loop() {
@@ -78,5 +72,9 @@ int Game::handle_event() {
   } else if (event.type == SDL_KEYDOWN) {
     keys_down[event.key.keysym.sym] = true;
   }
+  return handle_event_impl();
+}
+
+int Game::handle_event_impl() {
   return 0;
 }
