@@ -8,6 +8,7 @@
 #include "paddle.h"
 #include "constants.h"
 #include "text.h"
+#include "computer_ai.h"
 
 PongGame::PongGame():
   Game(),
@@ -38,9 +39,11 @@ PongGame::PongGame():
     constants::WINDOW_HEIGHT / 2,
     constants::BALL_RADIUS
   );
+  ai = new ComputerAI(computer, ball);
 }
 
 PongGame::~PongGame() {
+  delete ai;
   delete ball;
   delete computer;
   delete player;
@@ -49,6 +52,9 @@ PongGame::~PongGame() {
 void PongGame::update(int dt) {
   check_ball_collision();
   check_score();
+
+  Paddle::Direction computer_move = ai->next_move();
+  computer->set_direction(computer_move);
 
   player->update(dt);
   computer->update(dt);

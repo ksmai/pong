@@ -4,6 +4,7 @@
 #include "game.h"
 #include "paddle.h"
 #include "ball.h"
+#include "computer_ai.h"
 
 class PongGame: public Game {
 public:
@@ -20,6 +21,7 @@ private:
   Paddle *player;
   Paddle *computer;
   Ball *ball;
+  ComputerAI *ai;
   int player_score;
   int computer_score;
   bool player_serving;
