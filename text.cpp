@@ -53,6 +53,29 @@ void Text::add(const char *text, int x, int y, Size size, SDL_Color color) {
   SDL_DestroyTexture(texture);
 }
 
+void Text::add_centered(const char *text, int x, int y, Size size, SDL_Color color) {
+  SDL_Surface *surface;
+  if (size == Size::Small) {
+    surface = TTF_RenderText_Solid(small_font, text, color);
+  } else if (size == Size::Medium) {
+    surface = TTF_RenderText_Solid(medium_font, text, color);
+  } else if (size == Size::Large) {
+    surface = TTF_RenderText_Solid(large_font, text, color);
+  }
+  SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+  int w;
+  int h;
+  SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
+  SDL_Rect dest;
+  dest.x = x - w / 2;
+  dest.y = y - h / 2;
+  dest.w = w;
+  dest.h = h;
+  SDL_RenderCopy(renderer, texture, nullptr, &dest);
+  SDL_FreeSurface(surface);
+  SDL_DestroyTexture(texture);
+}
+
 void Text::add(const char *text, int x, int y, Size size, Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
   SDL_Color color;
   color.r = r;
@@ -60,4 +83,13 @@ void Text::add(const char *text, int x, int y, Size size, Uint8 r, Uint8 g, Uint
   color.b = b;
   color.a = a;
   add(text, x, y, size, color);
+}
+
+void Text::add_centered(const char *text, int x, int y, Size size, Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
+  SDL_Color color;
+  color.r = r;
+  color.g = g;
+  color.b = b;
+  color.a = a;
+  add_centered(text, x, y, size, color);
 }
