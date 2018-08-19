@@ -18,6 +18,8 @@ namespace constants {
   const int COMPUTER_Y = 20;
 
   const int MAX_SCORE = 5;
+
+  const char *const FONT_FILENAME = "ARIAL.TTF";
 }
 
 #endif

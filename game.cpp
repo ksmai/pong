@@ -1,6 +1,7 @@
 #include <SDL.h>
 
 #include "game.h"
+#include "text.h"
 #include "constants.h"
 
 Game::Game() {
@@ -15,9 +16,11 @@ Game::Game() {
   );
   renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
   last_frame_time = SDL_GetTicks();
+  text = new Text(renderer);
 }
 
 Game::~Game() {
+  delete text;
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
   SDL_Quit();
@@ -39,6 +42,9 @@ void Game::render() {
 }
 
 void Game::render_impl() {
+  text->add("Hello small", 0, 0, Text::Size::Small, 255, 255, 255);
+  text->add("Hello medium", 0, 100, Text::Size::Medium, 255, 255, 255);
+  text->add("Hello large", 0, 200, Text::Size::Large, 255, 255, 255);
 }
 
 void Game::event_loop() {

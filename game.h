@@ -3,6 +3,8 @@
 
 #include <SDL.h>
 
+#include "text.h"
+
 class Game {
 public:
   Game();
@@ -18,6 +20,7 @@ protected:
   SDL_Window *window;
   SDL_Renderer *renderer;
   SDL_Event event;
+  Text *text;
   int last_frame_time;
 };
 
