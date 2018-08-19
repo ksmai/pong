@@ -10,7 +10,7 @@ namespace constants {
   const int PADDLE_HEIGHT = 20;
   const int PADDLE_SPEED = 200;
 
-  const int BALL_RADIUS = 5;
+  const int BALL_RADIUS = 10;
   const int BALL_SPEED_Y = 50;
   const int BALL_SPEED_X_MAX = 100;
 

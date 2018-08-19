@@ -3,6 +3,7 @@
 
 #include "game.h"
 #include "paddle.h"
+#include "ball.h"
 
 class PongGame: public Game {
 public:
@@ -14,6 +15,13 @@ protected:
   virtual int handle_event_impl() override;
 private:
   Paddle *player;
+  Paddle *computer;
+  Ball *ball;
+  int player_score;
+  int computer_score;
+  bool player_serving;
+  bool playing;
+  bool scored;
 };
 
 #endif
