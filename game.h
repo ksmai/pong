@@ -4,6 +4,7 @@
 #include <SDL.h>
 
 #include "text.h"
+#include "graphics.h"
 
 class Game {
 public:
@@ -21,6 +22,7 @@ protected:
   SDL_Renderer *renderer;
   SDL_Event event;
   Text *text;
+  Graphics *graphics;
   int last_frame_time;
 };
 
